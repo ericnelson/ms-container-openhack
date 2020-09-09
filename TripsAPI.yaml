@@ -29,3 +29,15 @@ spec:
           value: "mydrivingDB"
       nodeSelector:    
         kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tripsapi
+  namespace: tripinsights 
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: tripsapi
