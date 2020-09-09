@@ -1,9 +1,5 @@
 docker login registryvhd1032.azurecr.io -u registryvhd1032 -p haTI8ku=XWRcWeExb+0WyY/vtM5u1yPm
 
-
-gpaiz
-mHW6UTCY2cZn4tb
-
 az group create --name gpaizResourceGroup --location eastus
 {
   "id": "/subscriptions/1f33d63d-b8e4-481b-bee6-a58430a90be8/resourceGroups/gpaizResourceGroup",
@@ -146,3 +142,20 @@ kubectl get nodes
 NAME                                STATUS   ROLES   AGE     VERSION
 aks-nodepool1-15068781-vmss000000   Ready    agent   3m15s   v1.16.13
 aks-nodepool1-15068781-vmss000001   Ready    agent   3m10s   v1.16.13
+
+
+kubectl apply -f POI.yaml
+
+  deployment.apps/poi created
+ 
+kubectl apply -f POI_service.yaml
+
+  service/poi created
+
+kubectl get pods
+
+
+kubectl exec -i -t poi-57c554bcd-g7cs8 sh
+
+
+
