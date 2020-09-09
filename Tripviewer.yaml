@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tripviewer 
+  name: tripviewer
+  namespace: tripinsights 
 spec:
   replicas: 1
   selector:
