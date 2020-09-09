@@ -1,0 +1,148 @@
+docker login registryvhd1032.azurecr.io -u registryvhd1032 -p haTI8ku=XWRcWeExb+0WyY/vtM5u1yPm
+
+
+gpaiz
+mHW6UTCY2cZn4tb
+
+az group create --name gpaizResourceGroup --location eastus
+{
+  "id": "/subscriptions/1f33d63d-b8e4-481b-bee6-a58430a90be8/resourceGroups/gpaizResourceGroup",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "gpaizResourceGroup",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+
+az ad sp create-for-rbac --skip-assignment
+
+{
+  "appId": "23e1e3b3-e415-4cf2-acd4-1cdd5fc54c8b",
+  "displayName": "azure-cli-2020-09-09-20-23-12",
+  "name": "http://azure-cli-2020-09-09-20-23-12",
+  "password": "Sv5n4xfl36oyoTM6jHs~b7.cxOUWuSw_M8",
+  "tenant": "1c7b6fb5-dc28-4eb7-ab39-361ce6de20b1"
+}
+
+az aks create --resource-group gpaizResourceGroup --name myAKSCluster --node-count 2 --enable-addons monitoring --generate-ssh-keys
+
+{
+  "aadProfile": null,
+  "addonProfiles": {
+    "kubedashboard": {
+      "config": null,
+      "enabled": true,
+      "identity": null
+    },
+    "omsagent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/1f33d63d-b8e4-481b-bee6-a58430a90be8/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-1f33d63d-b8e4-481b-bee6-a58430a90be8-eus"
+      },
+      "enabled": true,
+      "identity": null
+    }
+  },
+  "agentPoolProfiles": [
+    {
+      "availabilityZones": null,
+      "count": 2,
+      "enableAutoScaling": null,
+      "enableNodePublicIp": false,
+      "maxCount": null,
+      "maxPods": 110,
+      "minCount": null,
+      "mode": "System",
+      "name": "nodepool1",
+      "nodeLabels": {},
+      "nodeTaints": null,
+      "orchestratorVersion": "1.16.13",
+      "osDiskSizeGb": 128,
+      "osType": "Linux",
+      "provisioningState": "Succeeded",
+      "scaleSetEvictionPolicy": null,
+      "scaleSetPriority": null,
+      "spotMaxPrice": null,
+      "tags": null,
+      "type": "VirtualMachineScaleSets",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "apiServerAccessProfile": null,
+  "autoScalerProfile": null,
+  "diskEncryptionSetId": null,
+  "dnsPrefix": "myAKSClust-gpaizResourceGro-1f33d6",
+  "enablePodSecurityPolicy": null,
+  "enableRbac": true,
+  "fqdn": "myaksclust-gpaizresourcegro-1f33d6-464dedf7.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/1f33d63d-b8e4-481b-bee6-a58430a90be8/resourcegroups/gpaizResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "identity": null,
+  "identityProfile": null,
+  "kubernetesVersion": "1.16.13",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhUJgcfDtmHM+TtsRbL8ve8lp8YMNrV+AXMFwAR9BNaiS8aYwkMJd7IP8539RuBUb8bL9nS/vJPZBx3BZlMbCsVCoNVLxAPUGdvxtcESRdvmKr+zMM53URxfK9bRifQ4j7LYjMtkYRu3u/C4mUVPjf8U3uC7zXjNK/Ae7jD8r32XDc5WlsqHjFIiFY71f7r8YJyQbYsB2BTGnrMcvkwkYCJrPrNBHeJGtp235KQT3ssSyfjEwzj5TpGho/kbvrZwMuVp9oIbygtE5zo6d03EVHX7o3L5WLWeKLZZy4XjkTEjJ7/RQpBsYTdPvn8I0IOi//dQ1uEV3Gnp5HXxHk57j"
+        }
+      ]
+    }
+  },
+  "location": "eastus",
+  "maxAgentPools": 10,
+  "name": "myAKSCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "loadBalancerProfile": {
+      "allocatedOutboundPorts": null,
+      "effectiveOutboundIps": [
+        {
+          "id": "/subscriptions/1f33d63d-b8e4-481b-bee6-a58430a90be8/resourceGroups/MC_gpaizResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/ee864e12-0bf8-4e11-803b-6076c19b7b80",
+          "resourceGroup": "MC_gpaizResourceGroup_myAKSCluster_eastus"
+        }
+      ],
+      "idleTimeoutInMinutes": null,
+      "managedOutboundIps": {
+        "count": 1
+      },
+      "outboundIpPrefixes": null,
+      "outboundIps": null
+    },
+    "loadBalancerSku": "Standard",
+    "networkMode": null,
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "outboundType": "loadBalancer",
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_gpaizResourceGroup_myAKSCluster_eastus",
+  "privateFqdn": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "gpaizResourceGroup",
+  "servicePrincipalProfile": {
+    "clientId": "e7e2ee7c-f71f-4675-96d5-7b8feff9afc6",
+    "secret": null
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Free"
+  },
+  "tags": null,
+  "type": "Microsoft.ContainerService/ManagedClusters",
+  "windowsProfile": null
+}
+
+az aks get-credentials --resource-group gpaizResourceGroup --name myAKSCluster
+Merged "myAKSCluster" as current context in /home/hacker/.kube/config
+
+kubectl get nodes
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-15068781-vmss000000   Ready    agent   3m15s   v1.16.13
+aks-nodepool1-15068781-vmss000001   Ready    agent   3m10s   v1.16.13
