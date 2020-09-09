@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userapi 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userapi
+  template:
+    metadata:
+      labels:
+        app: userapi
+    spec:
+      containers:
+      - name: userapi
+        image: registryvhd1032.azurecr.io/tripinsights/user-java:1.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: SQL_USER
+          value: "sqladminvHd1032"
+        - name: SQL_PASSWORD
+          value: "mJ2tq2Zw2"
+        - name: SQL_SERVER
+          value: "sqlservervhd1032.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+      nodeSelector:    
+        kubernetes.io/os: linux
