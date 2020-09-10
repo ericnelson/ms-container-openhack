@@ -15,3 +15,11 @@ spec:
          serviceName: tripviewer
          servicePort: 80
        path: /(/|$)(.*)
+     - backend:
+         serviceName: tripviewer
+         servicePort: 80
+       path: /UserProfile(/|$)(.*)
+     - backend:
+         serviceName: tripviewer
+         servicePort: 80
+       path: /Trip(/|$)(.*)
