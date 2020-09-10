@@ -13,18 +13,18 @@ spec:
   - http:
      paths:
      - backend:
-         serviceName: poi.api
+         serviceName: poi
          servicePort: 80
        path: /api/poi(/|$)(.*)
      - backend:
-         serviceName: tripsapi.api
+         serviceName: tripsapi
          servicePort: 80
        path: /api/trips(/|$)(.*)
      - backend:
-         serviceName: userapi.api
+         serviceName: userapi
          servicePort: 80
        path: /api/user(/|$)(.*)
      - backend:
-         serviceName: userprofile.api
+         serviceName: userprofile
          servicePort: 80
        path: /api/user-java(/|$)(.*)
