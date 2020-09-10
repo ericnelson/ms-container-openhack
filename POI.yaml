@@ -36,8 +36,6 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: "tripsinsightssec"
-            nodePublishSecretRef:                       # Only required when using service principal mode
-              name: sql-password
       nodeSelector:    
         kubernetes.io/os: linux
 ---

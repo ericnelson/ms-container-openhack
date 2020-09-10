@@ -6,8 +6,8 @@ spec:
   provider: azure
   parameters:
     usePodIdentity: "false"         # [OPTIONAL] if not provided, will default to "false"
-    useVMManagedIdentity: "false"    # [OPTIONAL available for version > 0.0.4] if not provided, will default to "false"
-    userAssignedIdentityID: "c2efb702-55d6-46d9-b602-c79b362c3acc"     # [OPTIONAL available for version > 0.0.4] use the client id to specify which user assigned managed identity to use. If using a user assigned identity as the VM's managed identity, then specify the identity's client id. If empty, then defaults to use the system assigned identity on the VM
+    useVMManagedIdentity: "true"    # [OPTIONAL available for version > 0.0.4] if not provided, will default to "false"
+    userAssignedIdentityID: "8ce4fe3d-ee80-4ccb-a6b6-f907e99e0be6"     # [OPTIONAL available for version > 0.0.4] use the client id to specify which user assigned managed identity to use. If using a user assigned identity as the VM's managed identity, then specify the identity's client id. If empty, then defaults to use the system assigned identity on the VM
     keyvaultName: "tripinsights" # the name of the KeyVault
     cloudName: "AzurePublicCloud"
     objects: |

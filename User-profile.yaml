@@ -21,12 +21,21 @@ spec:
         env:
         - name: SQL_USER
           value: "sqladminvHd1032"
-        - name: SQL_PASSWORD
-          value: "mJ2tq2Zw2"
         - name: SQL_SERVER
           value: "sqlservervhd1032.database.windows.net"
         - name: SQL_DBNAME
           value: "mydrivingDB"
+        volumeMounts:
+        - name: sql_password
+          mountPath: /secrets
+          readOnly: true
+      volumes:
+        - name: sql_password
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "tripsinsightssec"
       nodeSelector:    
         kubernetes.io/os: linux
 ---
