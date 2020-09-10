@@ -25,10 +25,10 @@ spec:
           value: "sqlservervhd1032.database.windows.net"
         - name: SQL_DBNAME
           value: "mydrivingDB"
-      volumeMounts:
-      - name: SQL_PASSWORD
-        mountPath: /secrets
-        readonly: true
+        volumeMounts:
+        - name: SQL_PASSWORD
+          mountPath: /secrets
+          readonly: true
       volumes:
         - name: SQL_PASSWORD
           csi:
