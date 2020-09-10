@@ -21,20 +21,16 @@ spec:
         env:
         - name: SQL_USER
           value: "sqladminvHd1032"
-        - name: SA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: SQL_PASSWORD
-              key: SQL_PASSWORD 
-          volumeMounts:
-          - name: SQL_PASSWORD
-            mountPath: /secrets/SQL_PASSWORD
         - name: SQL_SERVER
           value: "sqlservervhd1032.database.windows.net"
         - name: SQL_DBNAME
           value: "mydrivingDB"
+      volumeMounts:
+      - name: SQL_PASSWORD
+        mountPath: /secrets
+        readonly: true
       volumes:
-        - name: secrets-store-inline
+        - name: SQL_PASSWORD
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true

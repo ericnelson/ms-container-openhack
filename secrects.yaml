@@ -14,6 +14,7 @@ spec:
       array:
         - |
           objectName: SQL-Password
+          objectAlias: SQL_PASSWORD
           objectType: secret       
     resourceGroup: "teamResources"     # [REQUIRED] the resource group name of the key vault
     subscriptionId: "1f33d63d-b8e4-481b-bee6-a58430a90be8"          # [REQUIRED] the subscription ID of the key vault
