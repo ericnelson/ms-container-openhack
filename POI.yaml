@@ -21,12 +21,27 @@ spec:
         env:
         - name: SQL_USER
           value: "sqladminvHd1032"
-        - name: SQL_PASSWORD
-          value: "mJ2tq2Zw2"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: SQL_PASSWORD
+              key: SQL_PASSWORD 
+          volumeMounts:
+          - name: SQL_PASSWORD
+            mountPath: /secrets/SQL_PASSWORD
         - name: SQL_SERVER
           value: "sqlservervhd1032.database.windows.net"
         - name: SQL_DBNAME
           value: "mydrivingDB"
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure"
+            nodePublishSecretRef:                       # Only required when using service principal mode
+              name: SQL-Password
       nodeSelector:    
         kubernetes.io/os: linux
 ---
