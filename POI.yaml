@@ -26,18 +26,18 @@ spec:
         - name: SQL_DBNAME
           value: "mydrivingDB"
         volumeMounts:
-        - name: SQL_PASSWORD
+        - name: sql_password
           mountPath: /secrets
-          readonly: true
+          readOnly: true
       volumes:
-        - name: SQL_PASSWORD
+        - name: sql_password
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: "azure"
+              secretProviderClass: "tripsinsightssec"
             nodePublishSecretRef:                       # Only required when using service principal mode
-              name: SQL-Password
+              name: sql-password
       nodeSelector:    
         kubernetes.io/os: linux
 ---

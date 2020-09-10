@@ -1,7 +1,7 @@
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
 kind: SecretProviderClass
 metadata:
-  name: azure
+  name: tripsinsightssec
 spec:
   provider: azure
   parameters:
@@ -13,8 +13,8 @@ spec:
     objects: |
       array:
         - |
-          objectName: SQL-Password
-          objectAlias: SQL_PASSWORD
+          objectName: sql-password
+          objectAlias: sql_password
           objectType: secret       
     resourceGroup: "teamResources"     # [REQUIRED] the resource group name of the key vault
     subscriptionId: "1f33d63d-b8e4-481b-bee6-a58430a90be8"          # [REQUIRED] the subscription ID of the key vault
