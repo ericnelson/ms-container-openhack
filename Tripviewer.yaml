@@ -20,9 +20,9 @@ spec:
         - containerPort: 80
         env:
         - name: TRIPS_API_ENDPOINT
-          value: "http://tripsapi.tripinsights.svc.cluster.local"
+          value: "http://tripsapi.api.svc.cluster.local"
         - name: USERPROFILE_API_ENDPOINT
-          value: "http://userprofile.tripinsights.svc.cluster.local"
+          value: "http://userprofile.api.svc.cluster.local"
       nodeSelector:    
         kubernetes.io/os: linux
 ---
