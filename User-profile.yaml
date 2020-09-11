@@ -28,11 +28,11 @@ spec:
         - name: SQL_DBNAME
           value: "mydrivingDB"
         volumeMounts:
-        - name: sql_password
+        - name: sql-password
           mountPath: /secrets
           readOnly: true
       volumes:
-        - name: sql_password
+        - name: sql-password
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
