@@ -10,6 +10,8 @@ spec:
       app: poi
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: poi
     spec:
@@ -50,3 +52,14 @@ spec:
   - port: 80
   selector:
     app: poi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: certificates
+  namespace: api
+type: Opapue
+data:
+  certificate.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURoRENDQW13Q0ZHZUNPVWNYQ0JxT2ZoUWp0TjZxRU1iRThCaURNQTBHQ1NxR1NJYjNEUUVCQ3dVQU1IOHgKQ3pBSkJnTlZCQVlUQWxWVE1Rc3dDUVlEVlFRSURBSkRUekVQTUEwR0ExVUVC$
+  key.pem: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBejY4ZHlHWkdSN2paT1BQMi9wRUtZRmFTcWRTK3hlbEwzNmJ4MUJjak1DSTRtRXlRCkF1dWx5bGZqTDNBME9US0gwOTlVSnJpeWJIVTY1c0RDUFpPbmk2M3Vpc25BY1Jm$
+  cacertificate.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQzekNDQXNlZ0F3SUJBZ0lVQ3hxQ1laOTUvdCswdDNyRld0NTJXRjZRUUhrd0RRWUpLb1pJaHZjTkFRRUwKQlFBd2Z6RUxNQWtHQTFVRUJoTUNWVk14Q3pBSkJnTlZCQWdNQWtOUE1ROH$
